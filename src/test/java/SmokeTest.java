@@ -13,17 +13,12 @@ import static Base_utility.Comman.driver;
 
 public class SmokeTest
 {
-
-
-
     LandingPage lp= new LandingPage(driver);
     SourcingPage sp= new SourcingPage(driver);
 
     @BeforeTest()
     public void BforeTest()
-
     {
-
         lp.InvokeBrowser("chrome");
         lp.ImpliWait( 10L);
         lp.MaximiseBrowser();
@@ -34,23 +29,17 @@ public class SmokeTest
 
     @AfterTest
     public void AfterTest()
-    {
-        lp.Quit();
-    }
+    {lp.Quit();}
 
     @Test
-    public void login(Method method) throws IOException {
-
-       // LandingPage lp= new LandingPage(driver);
-       // SourcingPage sp= new SourcingPage(driver);
-
+    public void loginSucces(Method method) throws IOException {
 
         lp.LoadURL("https://ssgqa.serviceurl.in/eSign/");
 
+        Assert.assertEquals("E-Sign",driver.getTitle());
 
-        //Assert.assertEquals("E-Sign",driver.getTitle());
-        lp.EnterMobileNum("8446644677");
-        lp.EnterPanNum("CPUPR0555K");
+        lp.EnterMobileNum("8443344677");
+        lp.EnterPanNum("CPUPR0995K");
         lp.ClickCheckBox();
         //lp.ClickReadMore();
         //lp.ClickReadLess();
@@ -60,8 +49,5 @@ public class SmokeTest
         sp.expwait(sp.Header, 30);
         lp.TakeScreenShot("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/",method.getName());
     }
-
-
-
 
 }
