@@ -1,25 +1,35 @@
 import Page_Utility.LandingPage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import Page_Utility.SourcingPage;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 import static Base_utility.Comman.driver;
 
 public class SmokeTest
 {
+
+
+
     LandingPage lp= new LandingPage(driver);
+    SourcingPage sp= new SourcingPage(driver);
 
     @BeforeTest()
     public void BforeTest()
+
     {
+
         lp.InvokeBrowser("chrome");
         lp.ImpliWait( 10L);
         lp.MaximiseBrowser();
+        
+        PageFactory.initElements(driver,lp);
+        PageFactory.initElements(driver,sp);
     }
 
     @AfterTest
@@ -29,20 +39,26 @@ public class SmokeTest
     }
 
     @Test
-    public void login() throws IOException {
-        PageFactory.initElements(driver,lp);
+    public void login(Method method) throws IOException {
+
+       // LandingPage lp= new LandingPage(driver);
+       // SourcingPage sp= new SourcingPage(driver);
+
+
         lp.LoadURL("https://ssgqa.serviceurl.in/eSign/");
-        lp.EnterMobileNum("8446676666");
-        lp.EnterPanNum("CPYPR0545K");
+
+
+        //Assert.assertEquals("E-Sign",driver.getTitle());
+        lp.EnterMobileNum("8446644677");
+        lp.EnterPanNum("CPUPR0555K");
         lp.ClickCheckBox();
-        lp.ClickReadMore();
-        lp.ClickReadLess();
+        //lp.ClickReadMore();
+        //lp.ClickReadLess();
         lp.ClickReceiveOtp();
-
         lp.EnterOtp("123456");
-
         lp.ClickSubmitOtp();
-        lp.TakeScreenShot("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/","Login");
+        sp.expwait(sp.Header, 30);
+        lp.TakeScreenShot("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/",method.getName());
     }
 
 

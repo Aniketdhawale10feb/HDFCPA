@@ -11,7 +11,7 @@ import java.sql.Time;
 public class LandingPage extends Comman
 {
     Comman comman= new Comman();
-    public LandingPage(WebDriver driver)
+   public LandingPage(WebDriver driver)
     {
         this.driver=driver;
         PageFactory.initElements(driver,this);
