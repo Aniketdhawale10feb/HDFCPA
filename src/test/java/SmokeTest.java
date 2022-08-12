@@ -27,7 +27,7 @@ public class SmokeTest
         lp.InvokeBrowser("chrome");
         lp.ImpliWait( 10L);
         lp.MaximiseBrowser();
-        
+
         PageFactory.initElements(driver,lp);
         PageFactory.initElements(driver,sp);
     }
