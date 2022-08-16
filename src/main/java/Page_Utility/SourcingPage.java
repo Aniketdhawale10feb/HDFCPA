@@ -21,10 +21,10 @@ public class SourcingPage extends Comman
     @FindBy(xpath = "//input[@id='mat-input-0']")
     public WebElement MobileNo;
 
-    @FindBy(xpath = "//input[@id='mat-input-1")
+    @FindBy(xpath = "//input[@id='mat-input-1']")
     public WebElement PanNo;
 
-    @FindBy(xpath = "//input[@id='mat-input-2")
+    @FindBy(xpath = "//input[@id='mat-input-2']")
     public WebElement RequestedAmount;
 
     @FindBy(xpath = "//span[text()='Continue']")
@@ -34,7 +34,7 @@ public class SourcingPage extends Comman
     public WebElement Logout;
 
 
-    public void ClickOnRequestedAmount(String value)
+    public void EnterRequestedAmount(String value)
     {
         comman.EnterValue(RequestedAmount,value);
     }
