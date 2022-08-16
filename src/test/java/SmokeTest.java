@@ -57,6 +57,9 @@ public class SmokeTest
 
         lp.expwait(op.OfferPageHeader, 30);
         FileUtils.deleteQuietly(new File("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots"));
+        FileUtils.deleteQuietly(new File("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/failedScreens/"));
+        FileUtils.deleteQuietly(new File("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/SuccessScreens/"));
+
         lp.TakeScreenShot("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/",method.getName());
     }
 
@@ -66,8 +69,8 @@ public class SmokeTest
         Assert.assertTrue(op.OfferPageHeader.isDisplayed());
         Assert.assertTrue(op.OfferAmount.isDisplayed());
         Assert.assertTrue(op.ROI.isDisplayed());
-        Assert.assertTrue(op.Tenure.isDisplayed());
         op.TakeScreenShot("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/","AllOfferPageelements");
+        Assert.assertTrue(op.Tenure.isDisplayed());
         op.ClickOnAccept();
     }
 
