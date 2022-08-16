@@ -2,12 +2,14 @@ import Base_utility.Comman;
 import Page_Utility.LandingPage;
 import Page_Utility.OfferPage;
 import Page_Utility.SourcingPage;
+import Utility.FolderOperations;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -22,7 +24,13 @@ public class SmokeTest
     LandingPage lp= new LandingPage(driver);
     SourcingPage sp= new SourcingPage(driver);
     OfferPage op = new OfferPage(driver);
+    FolderOperations FO= new FolderOperations();
 
+    @BeforeClass
+    public void BforeClass()
+    {
+        FO.CreateSSFolder();
+    }
     @BeforeTest()
     public void BforeTest()
     {
@@ -55,12 +63,12 @@ public class SmokeTest
         lp.EnterOtp("123456");
         lp.ClickSubmitOtp();
 
-        lp.expwait(op.OfferPageHeader, 30);
         FileUtils.deleteQuietly(new File("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots"));
         FileUtils.deleteQuietly(new File("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/failedScreens/"));
         FileUtils.deleteQuietly(new File("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/SuccessScreens/"));
 
-        lp.TakeScreenShot("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/",method.getName());
+       // lp.expwait(op.OfferPageHeader, 30);
+        //lp.TakeScreenShot("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/",method.getName());
     }
 
     @Test(priority = 1)
@@ -69,7 +77,7 @@ public class SmokeTest
         Assert.assertTrue(op.OfferPageHeader.isDisplayed());
         Assert.assertTrue(op.OfferAmount.isDisplayed());
         Assert.assertTrue(op.ROI.isDisplayed());
-        op.TakeScreenShot("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/","AllOfferPageelements");
+       // op.TakeScreenShot("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/","AllOfferPageelements");
         Assert.assertTrue(op.Tenure.isDisplayed());
         op.ClickOnAccept();
     }

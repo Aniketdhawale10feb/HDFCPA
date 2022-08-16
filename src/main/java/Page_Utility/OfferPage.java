@@ -38,7 +38,6 @@ public class OfferPage extends Comman
     {
         comman.ClickOn(AcceptButton);
     }
-
     public void ClickOnDecline()
     {
         comman.ClickOn(DeclineButton);

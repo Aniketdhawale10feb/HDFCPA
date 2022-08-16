@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class Listeners extends Comman implements ITestListener
 {
+
     Comman comman= new Comman();
     @Override
     public void onTestStart(ITestResult result) {
@@ -16,12 +17,15 @@ public class Listeners extends Comman implements ITestListener
         System.out.println("Test Case Execution Started :" +result.getName());
     }
 
+    FolderOperations FO= new FolderOperations();
     @Override
     public void onTestSuccess(ITestResult result){
         ITestListener.super.onTestSuccess(result);
         System.out.println("Test Success :"+result.getName());
         try {
-            comman.TakeScreenShot("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/SuccessScreens/",result.getName());
+           // comman.TakeScreenShot("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/SuccessScreens/"+"/"+,result.getName());
+            comman.TakeScreenShot(FO.CreateSSFolder().toString()+"/SuccessScreens/",result.getName());
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -32,10 +36,14 @@ public class Listeners extends Comman implements ITestListener
         ITestListener.super.onTestFailure(result);
         System.out.println("Test Failed :"+result.getName());
         try {
-            comman.TakeScreenShot("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/failedScreens/",result.getName());
+            String Path= FO.CreateSSFolder().toString();
+           // comman.TakeScreenShot("/home/lentraadmin/IdeaProjects/HDFCPA/ScreenShots/failedScreens/",result.getName());
+            comman.TakeScreenShot(FO.CreateSSFolder().toString()+"/FailedScreens/",result.getName());
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        System.out.println(result.getTestContext());
     }
 
     @Override

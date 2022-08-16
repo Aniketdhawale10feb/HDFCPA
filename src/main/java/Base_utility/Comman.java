@@ -40,7 +40,8 @@ public class Comman {
     {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(40));
         wait.until(ExpectedConditions.visibilityOf(Element));
-        Element.click(); }
+        Element.click();
+    }
 
     //This function is used to enter the value in specified webelement
     public void EnterValue(WebElement Element, String Value)
@@ -92,7 +93,6 @@ public class Comman {
         Actions action= new Actions(driver);
         action.contextClick(Element);
     }
-
 
     // This function is used to scroll upto certain webElement
     public void ScrollTo(WebElement Element)
